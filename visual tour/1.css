@@ -1,0 +1,22 @@
+@charset "UTF-8";
+/* CSS Document */
+
+img{ height: 400px;}
+div{ background-color: aqua; font-size: 17px;}
+a{ text-decoration: none; font-size: 15px; color: chocolate;}
+@media screen and (min-width: 768px) {
+	div{ background-color: cornflowerblue; font-size: 25px;}
+	
+}
+ 
+@media screen and (min-width: 1024px) {
+	a{ background-color: darkgray; font-size: 25px;}
+}
+ 
+@media screen and (min-width: 1200px) {
+	img{ height: 300px;}
+}
+  
+@media screen and (max-width: 480px) {
+	div{ color: deeppink;}
+}
