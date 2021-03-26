@@ -1,16 +1,47 @@
 @charset "UTF-8";
 /* CSS Document */
 
-img{ height: 400px;}
-div{ background-color: aqua; font-size: 17px;}
-a{ text-decoration: none; font-size: 15px; color: chocolate;}
+body{ margin: 0; padding: 0;}
+img{ height: 400px; margin: 20px;}
+div{ background-color: aqua; 
+	font-size: 17px; 
+	text-align: center;}
+a{ text-decoration: none; 
+	font-size: 15px; 
+	color: cornflowerblue}
+.a1{ background-color: lightpink; 
+	text-align: center; }
+.a2{ font-family:Constantia, "Lucida Bright", "DejaVu Serif", Georgia, "serif"; 
+	font-size: 40px;}
+.a3{ background-color: cornflowerblue; 
+	height: 2000px; width: 2000px;}
+.a4{ background-color: white;}
+.a5{ text-align: center; 
+	font-family: Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, "sans-serif"; 
+	color: hotpink; 
+	background-color: white; 
+	font-size: 35px; margin: 50px;}
+.a6{  width: 100%;
+  padding: 50px 0;
+  text-align: center;
+  background-color: lightblue;
+  margin-top: 20px;}
+#aa{ font-size: 20px;
+}
+#demo{ font-size: 15px;
+       color: aqua; 
+}
+
+
+
+
+
 @media screen and (min-width: 768px) {
 	div{ background-color: cornflowerblue; font-size: 25px;}
-	
 }
  
 @media screen and (min-width: 1024px) {
-	a{ background-color: darkgray; font-size: 25px;}
+	a{ color:deepskyblue; font-size: 25px;}
 }
  
 @media screen and (min-width: 1200px) {
