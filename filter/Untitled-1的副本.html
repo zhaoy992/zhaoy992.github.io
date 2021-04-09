@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+	<title>Spring Break</title>
+</head>
+	<style>
+	*{
+	margin:0;
+	padding:0;
+}
+
+html,body{
+	background:#8AC5A0;
+	margin: 5%
+}
+body {
+		font-size: 20px;
+		color: #090;
+		background-color: #eee;
+		text-align: center;
+	}
+	.select {
+		display: inline-block;
+		width: 300px;
+		position: relative;
+		vertical-align: middle;
+		padding: 0;
+		overflow: hidden;
+		background-color: #fff;
+		color: #555;
+		border: 1px solid #aaa;
+		text-shadow: none;
+		border-radius: 4px;
+		transition: box-shadow 0.25s ease;
+		z-index: 2;
+	}
+
+	.select:hover {
+		box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+	}
+
+	.select:before {
+		content: "";
+		position: absolute;
+		width: 0;
+		height: 0;
+		border: 10px solid transparent;
+		border-top-color: #ccc;
+		top: 14px;
+		right: 10px;
+		cursor: pointer;
+		z-index: -2;
+	}
+	.select select {
+		cursor: pointer;
+		padding: 10px;
+		width: 100%;
+		border: none;
+		background: transparent;
+		background-image: none;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+	}
+
+	.select select:focus {
+		outline: none;
+	}
+
+img {
+	position: relative;
+	float: contour;
+	width: auto;
+	height: 300px;
+	width: 300px;
+	border-radius: 3px;
+	box-shadow: rgba(0, 0, 0, 0.15) 0 0 8px;
+	background: #FBFBFB;
+	border: 1px solid #ddd;
+	margin: 10px auto;
+	margin-left: 15px;
+	padding: 5px;
+}
+
+h1{
+	width: 50%;
+	text-align: center;
+	margin:35px auto;
+	padding:14px;
+	color:#282828;
+	background:white;
+	font-family: monospace;
+	font-size: 20px;
+	text-transform: lowercase;
+}
+
+select{
+	font-size:15px;
+	margin-bottom: 20px;
+	font-family: monospace;
+}
+
+@media screen and (max-width: 768px) {
+		img{
+			position: relative;
+			float: contour;
+			width: auto;
+			height: 200px;
+		}
+	}
+
+
+
+</style>
+<body>
+
+	<h1>Spring Break</h1>
+
+	<select class="select">
+		<option value="all">all</option>
+		<option value="instrumental">beach</option>
+		<option value="indie-folk">city</option>
+		<option value="pop">sea</option>
+	</select>
+
+<div>
+	
+    <img class="all beach" src="beach/IMG_1313.JPG">
+	<img class="all beach" src="beach/IMG_1314.JPG">
+	<img class="all beach" src="beach/IMG_1334.JPG">
+	<img class="all beach" src="beach/IMG_1336.JPG">
+	
+<!--	<img class="all sea" src="city/IMG_1336.JPG">-->
+	<img class="all sea" src="city/IMG_1333.JPG">
+	<img class="all sea" src="city/IMG_1338.JPG">
+	<img class="all sea" src="city/IMG_1339.JPG">
+	
+    <img class="all city" src="sea/IMG_1315.JPG">
+	<img class="all city" src="sea/IMG_1335.JPG">
+	<img class="all city" src="sea/IMG_1359.jpg">
+</div>
+</body>
+</html>
+
+<script src="jquery.js"></script>
+<script>
+
+$(function(){
+	$('.select').change(function () {
+    var class_name = $(this).children('option:selected').text();
+    $('img').hide();
+    $(`img.${class_name}`).show();
+		});
+
+
+});
+	</script>
