@@ -1,122 +1,220 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8"> 
-<title>超简单的图片左右切换滑动</title> 
-<script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <title>Toy's Secret File</title>
+    <link rel="stylesheet" href="swiper.min.css">
+    <link rel="stylesheet" href="certify.css">
+    <script src="index.js"></script>
+    <style>
+        .swiper-slide img{width:100%;}
+        #certify .swiper-slide{
+          height:320px;
+        }
+        .box img{
+          width:100%;
+        }
+		
+        .swiper-slide .ww{
+          position:absolute;
+          width:200px;
+          right:60px;
+          bottom:20px;
+        }
+        .box{
+          position:relative;
+        }
+        .box .ww{
+            position:absolute;
+            width:140px;
+            right:30px;
+            bottom:20px;
+        }
+        .show{
+          width:100%;
+          height:100%;
+          background:rgba(0,0,0,0.5);
+          position:absolute;
+          top:0;
+          display:none;
+          z-index:99999
+        }
+
+        .show .pic{
+          width:60%;
+          height:auto;
+          background: #fff;
+          margin:auto;
+          margin-top:50px;
+          
+        }
+
+        .show .pic img{
+          width:100%;
+        }
+
+        .show .pic .ww{
+          position:absolute;
+          width:400px;
+          right:400px;
+          top:370px;
+        }
+        .box{
+          list-style:none;
+        }
+        .box li{
+            width:15%;
+            position:relative;
+            float:left;
+            margin-left:20px;
+          }
+        .box li .pics{
+          width:100%;
+        }
+    </style>
+    <script>
+          $(document).ready(function(){
+              if(isMobile()){
+                window.location.href='index.html';
+              }         
+          });
+    </script>
 </head>
-<style>
-	
-</style>
-<body bgcolor="black">
- <div  style="width:1470px;margin:auto;overflow:hidden;margin-top:200px">
-  <div id ="box" class="imgs" style="width:50000px;"><!--这个div的作用是让所有的图片都排在同一水平上，这样子切换的时候效果会更好-->    
-   <img onmousedown="movefun(event)" onmouseup="mouseup(event)" ontouchstart="touchStartFun(event)"  ontouchend="touchendFun(event)" src="1.png" /><!--这里的图片换上到时候自己对应的图片-->    
-   <img onmousedown="movefun(event)" onmouseup="mouseup(event)" ontouchstart="touchStartFun(event)"  ontouchend="touchendFun(event)" src="2.png" />    
-   <img onmousedown="movefun(event)" onmouseup="mouseup(event)" ontouchstart="touchStartFun(event)"  ontouchend="touchendFun(event)" src="3.png" />    
-   <img onmousedown="movefun(event)" onmouseup="mouseup(event)" ontouchstart="touchStartFun(event)"  ontouchend="touchendFun(event)" src="4.png" />    
-   <img onmousedown="movefun(event)" onmouseup="mouseup(event)" ontouchstart="touchStartFun(event)"  ontouchend="touchendFun(event)"  src="5.png" />    
-   <img onmousedown="movefun(event)" onmouseup="mouseup(event)" ontouchstart="touchStartFun(event)"  ontouchend="touchendFun(event)"  src="6.png" />  
-   <img onmousedown="movefun(event)" onmouseup="mouseup(event)" ontouchstart="touchStartFun(event)"  ontouchend="touchendFun(event)"  src="7.png" />    
-   <img onmousedown="movefun(event)" onmouseup="mouseup(event)" ontouchstart="touchStartFun(event)"  ontouchend="touchendFun(event)"  src="8.png" />    
-   <img onmousedown="movefun(event)" onmouseup="mouseup(event)" ontouchstart="touchStartFun(event)"  ontouchend="touchendFun(event)"  src="9.png" />    
-   <img onmousedown="movefun(event)" onmouseup="mouseup(event)" ontouchstart="touchStartFun(event)"  ontouchend="touchendFun(event)"  src="10.png" />    
-   <img onmousedown="movefun(event)" onmouseup="mouseup(event)" ontouchstart="touchStartFun(event)"  ontouchend="touchendFun(event)"  src="11.png" /> 
-   <img onmousedown="movefun(event)" onmouseup="mouseup(event)" ontouchstart="touchStartFun(event)"  ontouchend="touchendFun(event)" src="12.png" />    
-   <img onmousedown="movefun(event)" onmouseup="mouseup(event)" ontouchstart="touchStartFun(event)"  ontouchend="touchendFun(event)" src="13.png" />    
-   <img onmousedown="movefun(event)" onmouseup="mouseup(event)" ontouchstart="touchStartFun(event)"  ontouchend="touchendFun(event)" src="14.png" />    
-   <img onmousedown="movefun(event)" onmouseup="mouseup(event)" ontouchstart="touchStartFun(event)"  ontouchend="touchendFun(event)"  src="15.png" />    
-   <img onmousedown="movefun(event)" onmouseup="mouseup(event)" ontouchstart="touchStartFun(event)"  ontouchend="touchendFun(event)"  src="16.png" />  
-   <img onmousedown="movefun(event)" onmouseup="mouseup(event)" ontouchstart="touchStartFun(event)"  ontouchend="touchendFun(event)"  src="17.png" />    
-   <img onmousedown="movefun(event)" onmouseup="mouseup(event)" ontouchstart="touchStartFun(event)"  ontouchend="touchendFun(event)"  src="18.png" />    
-   <img onmousedown="movefun(event)" onmouseup="mouseup(event)" ontouchstart="touchStartFun(event)"  ontouchend="touchendFun(event)"  src="19.png" />    
-  </div>  
-  <div>    
-   <!--div onclick="pre()" style="float:left;cursor:pointer">上一页</div>    
-   <div onclick="nex()" style="float:right;cursor:pointer">下一页</div-->  
+<body>
+<div id="certify">
+<div class="swiper-container">
+<div class="swiper-wrapper">
+<div class="swiper-slide"><img src="1.png" /></div>
+<div class="swiper-slide"><img src="2.png" /></div>
+<div class="swiper-slide"><img src="3.png" /></div>
+<div class="swiper-slide"><img src="4.png" /></div>
+<div class="swiper-slide"><img src="5.png" /></div>
+<div class="swiper-slide"><img src="6.png" /></div>
+<div class="swiper-slide"><img src="7.png" /></div>
+<div class="swiper-slide"><img src="8.png" /></div>
+<div class="swiper-slide"><img src="9.png" /></div>
+<div class="swiper-slide"><img src="10.png" /></div>
+<div class="swiper-slide"><img src="11.png" /></div>
+<div class="swiper-slide"><img src="12.png" /></div>
+<div class="swiper-slide"><img src="13.png" /></div>
+<div class="swiper-slide"><img src="14.png" /></div>
+<div class="swiper-slide"><img src="15.png" /></div>
+<div class="swiper-slide"><img src="16.png" /></div>
+<div class="swiper-slide"><img src="17.png" /></div>
+<div class="swiper-slide"><img src="18.png" /></div>
+<div class="swiper-slide"><img src="19.png" /></div>
+<div class="swiper-slide"><img src="20.png" /></div>
+<div class="swiper-slide"><img src="21.png" /></div>
+<div class="swiper-slide"><img src="22.png" /></div>
+<div class="swiper-slide"><img src="23.png" /></div>
+<div class="swiper-slide"><img src="24.png" /></div>
+<div class="swiper-slide"><img src="25.png" /></div>
+<div class="swiper-slide"><img src="26.png" /></div>
+<div class="swiper-slide"><img src="27.png" /></div>
+<div class="swiper-slide"><img src="28.png" /></div>
+<div class="swiper-slide"><img src="29.png" /></div>
+<div class="swiper-slide"><img src="30.png" /></div>
+<div class="swiper-slide"><img src="31.png" /></div>
+<div class="swiper-slide"><img src="32.png" /></div>
+<div class="swiper-slide"><img src="33.png" /></div>
+<div class="swiper-slide"><img src="34.png" /></div>
+<div class="swiper-slide"><img src="35.png" /></div>
+<div class="swiper-slide"><img src="36.png" /></div>
+<div class="swiper-slide"><img src="37.png" /></div>
+<div class="swiper-slide"><img src="38.png" /></div>
+<div class="swiper-slide"><img src="39.png" /></div>
+<div class="swiper-slide"><img src="40.png" /></div>
+<div class="swiper-slide"><img src="41.png" /></div>
+</div>
+</div>
+</div>
+<div class="control-box">
+  
+  <div class="bigbox">
+    <div id="switcher">
+      <div class="content_1">
+          <ul class="box">
+
+          </ul>
+      </div>
+    </div>
   </div>
- </div>
+</div>
+<div class="show">
+      <div class="pic">
+        <img src="1.png" alt="">
+        <img class="ww" src="ww.png"  alt="">
+      </div>
+      
+    </div>
 <script>
-var cot=0;//设置一个计数器，初始值为0；作用是用来监听点击切换的时候哪一个图片应该隐藏或者显示
+var certifySwiper = new Swiper('#certify .swiper-container', {
+  watchSlidesProgress: true,
+  slidesPerView: 'auto',
+  centeredSlides: true,
+  loop: true,
+  loopedSlides: 1000,
+  autoplay: false,
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  pagination: {
+    el: '.swiper-pagination',
+    //clickable :true,
+  },
+  on: {
+    progress: function(progress) {
+      for (i = 0; i < this.slides.length; i++) {
+        var slide = this.slides.eq(i);
+        var slideProgress = this.slides[i].progress;
+        modify = 1;
+        if (Math.abs(slideProgress) > 1) {
+          modify = (Math.abs(slideProgress) - 1) * 0.3 + 1;
+        }
+        translate = slideProgress * modify * 260 + 'px';
+        scale = 1 - Math.abs(slideProgress) / 5;
+        zIndex = 999 - Math.abs(Math.round(10 * slideProgress));
+        slide.transform('translateX(' + translate + ') scale(' + scale + ')');
+        slide.css('zIndex', zIndex);
+        slide.css('opacity', 1);
+        if (Math.abs(slideProgress) > 3) {
+          slide.css('opacity', 0);
+        }
+      }
+    },
+    setTransition: function(transition) {
+      for (var i = 0; i < this.slides.length; i++) {
+        var slide = this.slides.eq(i)
+        slide.transition(transition);
+      }
 
-
-function nex(){  
- if(cot<=15){
-  
-  img = document.getElementsByTagName("img");
-  img[cot+1].style="width:400px; padding-left:30px;";
-  $('.imgs img').eq(cot).animate({'margin-left':'-435px'},500);   
-  cot++;    
-  img[cot+1].style="width:500px;padding-left:30px;transition: all 0.6s;-ms-transition: all 0.8s;";
-  
- }
-}
-function pre(){  
- if(cot>0){  
-  img = document.getElementsByTagName("img");
-  img[cot+1].style="width:400px; padding-left:30px;";
-  cot--;   
-  img[cot+1].style="width:500px; padding-left:30px;transition: all 0.6s;-ms-transition: all 0.8s;";
-  $('.imgs img').eq(cot).animate({'margin-left':'0'},500);  
- }
-}
-
-function touchStartFun(e){
-        e.preventDefault();
-        x = e.changedTouches[0].pageX;
-        y = e.changedTouches[0].pageY;
     }
-   
- function touchendFun(e){
-        e.preventDefault();
-        var mx = e.changedTouches[0].pageX;
-        var my = e.changedTouches[0].pageY;
-		if(mx-x>10)
-		  {
-		    pre();
-		  }
-		  if(mx-x<-10)
-		  {
-		    nex();
-		  }
-}
-
- var box=document.getElementsByTagName("img");
- var i=0;
- for (i=0;i<box.length; i++) {
-	box[i].style="width:400px; padding-left:30px;";
-	//$('.img1').on('touchstart',touchStartFun).on('touchend',touchendFun);
-	//box[i].ontouchstart=touchStartFun(e);
- }
- box[1].style="width:500px; padding-left:30px;";
- var x,y;//全局作用域
- //鼠标按下事件 0级
- function movefun(e) {//传入形参e
- e.preventDefault();
- var mx=e.clientX;//鼠标距离浏览器左
- var my=e.clientY;//鼠标距离浏览器上
-
- x=mx;//实际盒子距离的浏览器左
- y=my;//实际盒子距离的浏览器上
- //鼠标移动事件 0级
-
-
- };
- //鼠标弹起事件(松开)
-  function mouseup(e) {
-  
-  //获取当前鼠标移动到的坐标点
-  var mx=e.clientX;
-  var my=e.clientY;
-  if(mx-x>10)
-  {
-    pre();
   }
-  if(mx-x<-10)
-  {
-    nex();
-  }
- };
+
+})
+</script>
+<script>
+$(".swiper-slide").click(function(){
+    var pic = $(this).find('img').attr('src');
+    if($(this).is('.yes')){
+        alert('Added');
+    }else{
+        $(this).append("<img src='ww.png' class='ww' alt=''>");
+        $(this).addClass('yes');
+        $(".content_1 .box").append('<li><img class="pics" src="'+pic+'" alt=""><img src="ww.png" class="ww" alt=""></li>');
+    }
+    
+});
+$(document).on('click','.box',function(){
+      var pic = $(this).find('img').eq(0).attr('src');
+      console.log(pic);
+      $(".show .pic img").eq(0).attr('src',pic);
+      $(".show").show();
+});
+$(".show").on('click',function(){
+      $(this).hide();
+    })
 </script>
 </body>
 </html>

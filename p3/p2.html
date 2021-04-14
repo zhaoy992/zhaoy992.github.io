@@ -9,7 +9,7 @@
 	
 </style>
 <body bgcolor="black">
- <div  style="width:1430px;margin:auto;overflow:hidden;margin-top:200px">
+ <div  style="width:2270px;margin:auto;overflow:hidden;margin-top:200px"> <!-- 这个最外围的容器div宽度为900px，每张图宽为300px，所以只显示3张，剩下的图超出容器隐藏起来 -->  
   <div id ="box" class="imgs" style="width:50000px;"><!--这个div的作用是让所有的图片都排在同一水平上，这样子切换的时候效果会更好-->    
    <img onmousedown="movefun(event)" onmouseup="mouseup(event)" ontouchstart="touchStartFun(event)"  ontouchend="touchendFun(event)" src="1.png" /><!--这里的图片换上到时候自己对应的图片-->    
    <img onmousedown="movefun(event)" onmouseup="mouseup(event)" ontouchstart="touchStartFun(event)"  ontouchend="touchendFun(event)" src="2.png" />    
@@ -44,19 +44,19 @@ function nex(){
  if(cot<=15){
   
   img = document.getElementsByTagName("img");
-  img[cot+1].style="width:400px; padding-left:30px;";
+  img[cot+2].style="width:400px; padding-left:30px;";
   $('.imgs img').eq(cot).animate({'margin-left':'-435px'},500);   
   cot++;    
-  img[cot+1].style="width:500px;padding-left:30px;transition: all 0.6s;-ms-transition: all 0.8s;";
+  img[cot+2].style="width:500px;padding-left:30px;transition: all 0.6s;-ms-transition: all 0.8s;";
   
  }
 }
 function pre(){  
  if(cot>0){  
   img = document.getElementsByTagName("img");
-  img[cot+1].style="width:400px; padding-left:30px;";
+  img[cot+2].style="width:400px; padding-left:30px;";
   cot--;   
-  img[cot+1].style="width:500px; padding-left:30px;transition: all 0.6s;-ms-transition: all 0.8s;";
+  img[cot+2].style="width:500px; padding-left:30px;transition: all 0.6s;-ms-transition: all 0.8s;";
   $('.imgs img').eq(cot).animate({'margin-left':'0'},500);  
  }
 }
@@ -88,7 +88,7 @@ function touchStartFun(e){
 	//$('.img1').on('touchstart',touchStartFun).on('touchend',touchendFun);
 	//box[i].ontouchstart=touchStartFun(e);
  }
- box[1].style="width:500px; padding-left:30px;";
+ box[2].style="width:500px; padding-left:30px;";
  var x,y;//全局作用域
  //鼠标按下事件 0级
  function movefun(e) {//传入形参e

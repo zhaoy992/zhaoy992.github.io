@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>支持移动端手势滑动的幻灯片切换</title>
+
+	<link rel="stylesheet" type="text/css" href="index.css">
+	<script src="index.js"></script>
+	<style>
+		.sw-next-prev{display:none;}
+		.sw-bullet li{display:none;}
+		.list li{width:30%;}
+		.list li img{
+			width:100%;
+		}
+		.list{
+			list-style:none;
+			padding:0;
+			margin:40px 0;
+
+		}
+		.list li{float:left;margin-left:10px;position:relative;}
+		.list li .ww{
+			position:absolute;
+			width:60px;
+			right:10px;
+			bottom:0px;
+		} 
+		.sw-slide{
+			position:relative;
+			
+		}
+		.sw-slides li .ww{
+			position:absolute;
+			width:200px;
+			right:10px;
+			top:160px;
+			
+		}
+		.show{
+			width:100%;
+			min-height:680px;
+			background:rgba(0,0,0,0.5);
+			position:absolute;
+			top:0;
+			display:none;
+		}
+
+		.show .pic{
+			width:90%;
+			height:auto;
+			background: #fff;
+			margin:auto;
+			margin-top:50%;
+		}
+
+		.show .pic img{
+			width:100%;
+		}
+
+		.show .pic .ww{
+			position:absolute;
+			width:200px;
+			right:10px;
+			top:270px;
+		}
+	</style>
+	<script>
+	$(document).ready(function(){
+		if(!isMobile()){
+			window.location.href='test.html';
+		}
+	});
+		
+	</script>
+</head>
+<body style="background-color:#fff">
+	<div class="app">
+		<article class="container">
+		 	<section>
+		      <figure id="swiper" class="swipslider" style="padding-top: 60%;">
+		        <ul class="sw-slides">
+			          <li class="sw-slide">
+			            <img src="1.png">
+			            
+			          </li>
+			          <li class="sw-slide">
+			            <img src="2.png">
+			            
+			          </li>
+			          <li class="sw-slide">
+			            <img src="3.png">
+			            
+			          </li>
+			          <li class="sw-slide">
+			            <img src="4.png">
+			            
+			          </li>
+		          </ul>
+		      </figure>
+		    </section> 
+		 </article>
+		 	<ul class="list">
+					
+			</ul>
+		<div class="show">
+			<div class="pic">
+				<img src="1.png" alt="">
+				<img class="ww" src="ww.png"  alt="">
+			</div>
+			
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+		$(window).load(function(){
+		      $('#swiper').swipeslider({
+		      		autoPlay:false
+		      	});
+		    });
+		$(".sw-slides li").on('click',function(){
+			var pic = $(this).find('img').attr('src');
+			if($(this).is('.yes')){
+				alert('已添加');
+			}else{
+
+				$(this).append('<img class="ww yes" src="ww.png" >');
+				$(this).addClass('yes');
+				$(".list").append('<li class="items"><img src="'+pic+'"><img class="ww" src="ww.png"  alt=""></li>');
+			}			
+		})
+		$(document).on('click','.items',function(){
+			var pic = $(this).find('img').eq(0).attr('src');
+			console.log(pic);
+			$(".show .pic img").eq(0).attr('src',pic);
+			$(".show").show();
+		});
+
+		$(".show").on('click',function(){
+			$(this).hide();
+		})
+	</script>
+</body>
+</html>
