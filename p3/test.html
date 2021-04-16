@@ -17,18 +17,19 @@
 		
         .swiper-slide .ww{
           position:absolute;
-          width:200px;
+          width:320px;
           right:60px;
-          bottom:20px;
+          bottom:-100px;
         }
         .box{
           position:relative;
+          top:150px;
         }
         .box .ww{
             position:absolute;
-            width:140px;
+            width:60px;
             right:30px;
-            bottom:20px;
+            bottom:5px;
         }
         .show{
           width:100%;
@@ -61,15 +62,27 @@
         }
         .box{
           list-style:none;
+          z-index:999;
         }
         .box li{
-            width:15%;
+            width:8%;
             position:relative;
             float:left;
             margin-left:20px;
           }
         .box li .pics{
           width:100%;
+        }
+        .title{
+          
+          position:absolute;
+          height:150px;
+          width:100%;
+          line-height:200px;
+          text-align:center;
+          font-size:40px;
+          font-weight:bold;
+		  color: brown;
         }
     </style>
     <script>
@@ -81,6 +94,7 @@
     </script>
 </head>
 <body>
+<div class="title">TOY'S SECRET FILE</div>
 <div id="certify">
 <div class="swiper-container">
 <div class="swiper-wrapper">
