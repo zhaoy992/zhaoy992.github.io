@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Gallery</title>
+</head>
+<style>
+
+body {
+	margin-left: 130px;
+	margin-top: 50px;
+	font-size:62.5%;
+	/*10 ÷ 16 × 100% = 62.5%*/
+				font-weight:lighter;
+}
+h1 {
+	font-size:2.4rem;
+	/*2.4em × 10 = 24px */
+}
+p {
+	font-size:0.88rem;
+	/*1.4em × 10 = 14px */
+}
+li {
+	font-size:0.88rem;
+	/*1.4 × ? = 14px ? */
+}
+.proRow {
+	display:flex;
+	flex-wrap:wrap;
+	
+}
+.proRow > div {
+  width: 20%;
+  
+}
+.proBig {
+	width:235px;
+	margin:15px 15px;
+	position:relative;
+}
+.pro {
+	border:0px solid #ccc;
+	height:250px;
+}
+.proImg {
+	width:196px;
+	height:196px;
+	text-align:center;
+	cursor: pointer;
+    transition: all 0.1s;
+	
+}
+.proImg img {
+	height:196px;
+	object-fit: cover;
+	}
+
+.proText {
+	margin:10px 10px;
+	height:120px;
+}
+.text {
+	font-size:1rem;
+	margin:0 auto;
+	font-weight:normal;
+	display:none;
+	font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
+	color: black;
+}
+
+.proBtn {
+	width:235px;
+	height:262px;
+	background-color:#fff;
+	background-color:rgba(255,255,255,0.5);
+	position:absolute;
+	box-sizing:border-box;
+	padding-top:80px;
+	margin-top:-252px;
+	display:none;
+}
+.proBig:hover .proBtn {
+	display:block;
+}
+.btn {
+	width:167px;
+	height:60px;
+	margin:130px auto;
+	background-color:transparent;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	box-sizing:border-box;
+}
+.btn:hover {
+	border:0px solid #66503B;
+}
+.black_overlay{ 
+    display: none; 
+    position: absolute; 
+    top: 0%; 
+    left: 0%; 
+    width: 10000%; 
+    height: 10000%; 
+    background-color: black; 
+    z-index:1001; 
+    -moz-opacity: 0.2; 
+    opacity:.90; 
+    filter: alpha(opacity=20);  
+} 
+
+.big_img { 
+    display: none; 
+    position: absolute; 
+   
+    left: 20%;
+    top: 0%;
+    margin: -60px 0px 0px -60px;
+    z-index:1002; 
+    overflow: auto; 
+}
+.ct{
+   
+
+}
+	.p{ font-size: 38px; 
+	font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+		margin-bottom: 40px;
+		margin-left: 30px;
+	
+	}
+	.p{ font-size: 38px; 
+	font-family:"Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, "sans-serif";
+		margin-bottom: 40px;
+		margin-left: 30px;
+		color: brown;
+	
+	}
+
+</style>
+<body>
+	<div class="p">CONNECTION</div>
+
+<div class="ct" >
+  <div class="proRow" >
+    <div class="proBig" onclick="imgclick(this)">
+      <div class="pro">
+        <div class="proImg"><img width="235" src="image/1 (1).JPG" ></div>
+      </div>
+      <a href="#">
+      <div class="proBtn">
+        <div class="btn">
+          <p>Carrousel III<br>
+			2020<br>
+			30*23 cm<br>
+			mixed media on pape</p>
+        </div>
+      </div>
+      </a> </div>
+    <div class="proBig" onclick="imgclick(this)">
+      <div class="pro">
+        <div class="proImg"><img width="235" src="image/1 (2).JPG"></div>
+      </div>
+      <a href="#">
+      <div class="proBtn">
+        <div class="btn">
+          <p>Carrousel II<br>
+			2010<br>
+			30*23 cm<br>
+			mixed media on pape</p>
+        </div>
+      </div>
+      </a> </div>
+    <div class="proBig" onclick="imgclick(this)">
+      <div class="pro">
+        <div class="proImg"><img width="235" src="image/1 (3).JPG"></div>
+      </div>
+      <a href="#">
+      <div class="proBtn">
+        <div class="btn">
+          <p>Carrousel I<br>
+			2020<br>
+			30*23 cm<br>
+			mixed media on pape</p>
+        </div>
+      </div>
+      </a> </div>
+    <div class="proBig" onclick="imgclick(this)">
+      <div class="pro">
+        <div class="proImg"><img width="235" src="image/1 (4).JPG"></div>
+      </div>
+      <a href="#">
+      <div class="proBtn">
+        <div class="btn">
+          <p>Untitled<br>
+			2020<br>
+			15*30 cm<br>
+			mixed media</p>
+        </div>
+      </div>
+      </a> </div>
+	
+    <div class="proBig" onclick="imgclick(this)">
+      <div class="pro">
+        <div class="proImg"><img width="235" src="image/1 (5).JPG"></div>     
+      </div>
+      <a href="#">
+      <div class="proBtn">
+        <div class="btn">
+          <p>Rivers II<br>
+			2019<br>
+			9*12 inch<br>
+			mixed media on pape</p>
+        </div>
+      </div>
+      </a> </div>
+    <div class="proBig"  onclick="imgclick(this)">
+      <div class="pro">
+        <div class="proImg"><img width="235" src="image/1 (6).JPG"></div>       
+      </div>
+      <a href="#">
+      <div class="proBtn">
+        <div class="btn">
+          <p>Rivers II<br>
+			2019<br>
+			9*12 inch<br>
+			mixed media on pape</p>
+        </div>
+      </div>
+      </a> </div>
+    <div class="proBig"  onclick="imgclick(this)">
+      <div class="pro">
+        <div class="proImg"><img width="235" src="image/1 (7).JPG"></div>
+       
+      </div>
+      <a href="#">
+      <div class="proBtn">
+        <div class="btn">
+          <p>With Wind<br>
+			2019<br>
+			12*14 inch<br>
+			mixed media on pape</p>
+        </div>
+      </div>
+      </a> </div>
+    <div class="proBig"  onclick="imgclick(this)">
+      <div class="pro"  onclick="imgclick(this)">
+        <div class="proImg"><img width="235" src="image/1 (8).JPG"></div>      
+      </div>
+      <a href="#">
+      <div class="proBtn">
+        <div class="btn">
+          <p>The Romance<br>
+			2018<br>
+			12*16 1/2 inch<br>
+			Ink, crayon, spray paint on paper</p>
+        </div>
+      </div>
+      </a> </div>
+    <div class="proBig"  onclick="imgclick(this)">
+      <div class="pro">
+        <div class="proImg"><img width="235" src="image/1 (9).JPG"></div>
+      </div>
+      <a href="#">
+      <div class="proBtn">
+        <div class="btn">
+          <p>People II<br>
+			2018<br>
+			9*12 inch<br>
+			ink, acrylic, collage on paper</p>
+        </div>
+      </div>
+      </a> </div>
+    <div class="proBig"  onclick="imgclick(this)">
+      <div class="pro">
+        <div class="proImg"><img width="235" src="image/1 (10).JPG"></div>
+      </div>
+      <a href="#">
+      <div class="proBtn">
+        <div class="btn">
+          <p>People I<br>
+			2018<br>
+			9*12 inch inch<br>
+			Ink, crayon, spray paint on paper</p>
+        </div>
+      </div>
+      </a> </div>
+	 <div class="proBig" onclick="imgclick(this)">
+      <div class="pro">
+        <div class="proImg"><img width="235" src="image/1 (11).JPG" ></div>
+      </div>
+      <a href="#">
+      <div class="proBtn">
+        <div class="btn">
+          <p>Ma<br>
+			2020<br>
+			15*30cm<br>
+			mixed media</p>
+        </div>
+      </div>
+      </a> </div>
+<div class="proBig" onclick="imgclick(this)">
+      <div class="pro">
+        <div class="proImg"><img width="235" src="image/1 (12).JPG" ></div>
+      </div>
+      <a href="#">
+      <div class="proBtn">
+        <div class="btn">
+          <p>Untitled<br>
+			2018<br>
+			9*12inch<br>
+			ink, acrylic on canvas</p>
+        </div>
+      </div>
+      </a> </div>
+
+
+
+	  
+	  
+	<img id="light" class="big_img" src ="image/2.png" onclick = "big_imgclick()"/>
+ 
+    
+ 
+  </div>
+  <div id="fade" class="black_overlay"></div>  
+</div>
+
+<script>
+function imgclick(node) {
+    img = node.getElementsByTagName('img')[0].attributes[1].nodeValue;
+    document.getElementById('light').src =img;
+    document.getElementById('light').style.display ='block';
+	
+	document.getElementById('fade').style.display='block'
+}
+function big_imgclick() {
+   document.getElementById('light').style.display ='none' ;
+   document.getElementById('fade').style.display='none'
+}
+
+</script>
+
+</body>
+</html>
