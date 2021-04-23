@@ -6,7 +6,7 @@
     <script src="jquery的副本.js"></script>
 <!--	I should put style in a seperate style list instead of here. But here are the styles.-->
     <style>
-/*		body style*/
+/*		body style so the stars can show on all the screen but paragraphs will show with margins */
 		body{ margin-left: 50px; margin-right: 50px;}
         html {
             width: 100%;
@@ -24,7 +24,7 @@
             background-color: #000000;
             position: relative;
         }
-/*        star setting */
+/*        star setting. I used 4 different time setting for stars so they can shine in different frequency */
         .a1 {
             color: burlywood;
             text-shadow: 0px 0px 8px #FDFCFC;
@@ -74,7 +74,7 @@
                 opacity: 1;
             }
         }
-/*        words setting 1*/
+/*        words setting 1 I used 6 different words setting so the title are bolder, and all of them can shine in differnt frenquency like stars */
         .p {
             color: antiquewhite;
             font-family: Baskerville, 'Palatino Linotype', Palatino, 'Century Schoolbook L', 'Times New Roman', 'serif';
@@ -151,11 +151,11 @@
 
 
 
-<!--start of body name-->
+<!--start of body (name)-->
     <div id="p22" class="a3"> <a style="color:antiquewhite;  text-decoration: none;font-size: 35px;" href="javascript:;">On Punctuation</a> </div>
 <!--	author-->
     <div id="p23" class="a3"> <a style="color:antiquewhite;  text-decoration: none; font-size: 15px; margin-bottom: 10px;" href="javascript:;">By Gertrude Stein</a> </div>
-<!--	paragraph-->
+<!--	paragraph. I added js to every paragraph so they can only show when click on the puntuations-->
     <div style="position: relative;">
         <div id="p11" class="a2" style="position: absolute; top: -5px; left: 300px; z-index: 9999;">
             <a style="color:burlywood; text-decoration: none;" href="javascript:;">?</a>
@@ -300,6 +300,7 @@
     for (let i = 0; i < 500; i++) {
         let number = Math.random()
         if (number < 0.3) {
+			
 
             $('<div class="a1" style=" top: ' + Math.random() * 1500 + 'px; left: ' + Math.random() * 2000 + 'px;">.</div>').appendTo('#ss');
         } else if (number >= 0.3 && number < 0.6) {
@@ -351,3 +352,4 @@
         $("#p122").toggleClass("p_xianshi");
     });
 </script>
+<!--added class so the paragraph can show when click on the puctuation-->
