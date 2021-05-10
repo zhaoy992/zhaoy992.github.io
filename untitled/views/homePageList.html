@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="../asstes/myPublic.css" />
+  <link rel="stylesheet" type="text/css" href="../asstes/element.css" />
+  <script src="../asstes/vue.min.js"></script>
+  <script src="../asstes/element.js"></script>
+  <script src="../asstes/anime.min.js"></script>
+  <script src="../asstes/constData.js"></script>
+</head>
+
+<body>
+
+
+  <div id="app" style="background: rgb(161,142,152);overflow: hidden">
+    <template>
+        <div class="listBox">
+
+            <div  class="itemNext"  v-for="(item, index) in list" :key="index"  :class='[item.checked ==2 ?"blur":""]'>
+                        <div class="itemBox" @click="clickA(item)">
+                                <img v-show="flag"  v-on:mouseenter="changeBlur(item)"  :src="item.imgUrl01" alt="">
+                             <img v-show="!flag"  v-on:mouseenter="changeBlur(item)" :src="item.imgUrl02" alt="">
+
+                        </div>
+                                            <div class="itemBoxs">
+                                                {{item.font}}
+                                            </div>
+                    </div>
+        </div>
+
+    </template>
+  </div>
+
+
+
+</body>
+
+</html>
+<script>
+
+
+  new Vue({
+    el: '#app',
+    data() {
+      return {
+        linkData: {},
+        list: [],
+        flag: true
+      }
+    },
+    created() {
+        let that = this;
+        this.getAData();
+        this.getlistData();
+        setInterval(() => {
+            that.flag = !that.flag
+        }, imgChangeTime * 2000);
+    },
+    mounted() {
+    //   this.initData();
+
+    },
+    methods: {
+      // 点击圆
+      clickA(item) {
+        // window.open("http://www.baidu.com")
+        window.open(item.url )
+      },
+      // 获取列表数据
+      getlistData() {
+        let  that = this;
+        constData.linkJson.forEach(function(obj, index){
+            console.log(obj,"obj.list")
+            if (obj.key === that.linkData.type) {
+                that.list = [...obj.list]
+            }
+        })
+          console.log(this.list,"fsklafjsaklfjksaljfkasl")
+      },
+      // 获取链接的数据
+      getAData() {
+        let that = this;
+        if(document.URL.indexOf("?")<0) return;//获取当前url地址,如果没参数.直接返回
+        let str=document.URL.split("?")[1];
+        let obj={};
+        let arr;
+        //当只有一个参数传过来时
+        if(str.indexOf("&")<0){
+            if(str.indexOf("=")<0) return;
+            arr=str.split("=");
+            obj[arr[0]]=arr[1];
+            this.linkData = obj;
+        // console.log("获取的数据",this.linkData)
+            return obj;
+        }
+        //当有多个参数时
+        arr=str.split("&");
+        let arr1;
+        for(let i=0;i<arr.length;i++){
+            arr1=arr[i].split("=");
+            obj[arr1[0]]=arr1[1];
+        }
+        this.linkData = obj;
+        console.log("获取的数据",this.linkData)
+        return obj;
+      },
+        //在当前数组增加checked属性为默认为1表示不模糊，为2模糊
+        changeBlur(event){
+          const that = this
+          console.log(event.checked,"fksajkfjasklfjaskl")
+            let rowsList = []
+          if (that.list.length>0){
+              that.list.map(items=>{
+                  if (items === event){
+                      rowsList.push({...items,checked:1})
+                  }else {
+                      rowsList.push({...items,checked: 2})
+                  }
+              })
+          }
+          that.list = [...rowsList]
+        },
+        visibledss(event){
+          // console.log(event)
+        }
+    }
+  })
+</script>
+<style>
+
+/* #app {
+    padding: 20px;
+} */
+.el-scrollbar.scrollBarCss {
+    height: 100%;
+}
+.el-scrollbar.scrollBarCss .el-scrollbar__wrap{
+    /*overflow-x:hidden;*/
+    /* .el-scrollbar__view{
+        height: 100%;
+        white-space: nowrap;
+    } */
+}
+.itemNext{
+    box-sizing: border-box;
+    position: relative;
+    width: 30.33%;
+    height: 200px;
+    float: left;
+    margin: 1.5%;
+}
+.itemBoxs{
+    position: absolute;
+    width: 40%;
+    /*background: rgb(200,155,94);*/
+    background: white;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    overflow: hidden;
+    word-wrap: break-word;
+    word-break: break-all;
+    table-layout: fixed;
+    padding: 0;
+    /* line-height: 37px; */
+    height: 50px;
+    color: black;
+    font-weight: bold;
+    max-height: 33px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 28px;
+    display: inline-table;
+}
+.listBox {
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(#c0975f, #7e6546);
+    /*padding: 20px;*/
+    overflow: auto;
+}
+.blur{
+    filter:blur(10px);
+}
+.itemTwoImg{
+    position: absolute;
+    top: 62px;
+    right: 129px;
+    left: 113px;
+    padding: 0;
+    margin: auto;
+    bottom: 65px;
+}
+.listBox .itemBox {
+   /* background-color: red; */
+    background-image: linear-gradient(#c0975f, #7e6546);
+   /*margin-bottom: 20px;*/
+   overflow: hidden;
+   cursor: pointer;
+}
+.listBox .itemBox:hover {
+   box-sizing: border-box;
+   /*border: 20px solid #000000;*/
+    box-shadow: 0px 10px 10px rgba(40, 53, 77, 0.16);
+}
+.listBox .itemBox img{
+   width: 100%;
+   height: 223px;
+}
+
+
+
+
+</style>

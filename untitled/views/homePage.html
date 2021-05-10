@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="../asstes/myPublic.css" />
+  <link rel="stylesheet" type="text/css" href="../asstes/element.css" />
+  <script src="../asstes/vue.min.js"></script>
+  <script src="../asstes/element.js"></script>
+  <script src="../asstes/anime.min.js"></script>
+  <script src="../asstes/constData.js"></script>
+</head>
+	<style>
+		body{ background-color: antiquewhite;}
+	</style>
+
+<body>
+
+
+  <div id="app">
+    <template>
+
+      <div class="wrapper">
+        <div class="boxes">
+          <!-- 8个圆 -->
+          <div class="box" v-for="(item, index) in list" :key="index" :style="'background-color:'+item.cirBg" @click="clickA(item)" >
+            <div>
+              {{item.textRow01}}<br>
+              {{item.textRow02}}
+            </div>
+            <!-- <div>{{item.textRow02}}</div> -->
+          </div>
+          <div class="box" v-for="(item, index) in list" :key="index" :style="'background-color:'+item.cirBg" @click="clickA(item)">
+            <div>
+              {{item.textRow01}}<br>
+              {{item.textRow02}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="homePageName">
+        {{homePageName}}
+      </div>
+    </template>
+  </div>
+
+
+
+</body>
+
+</html>
+<script>
+	
+
+
+  new Vue({
+    el: '#app',
+    data() {
+      return {
+        clientWidth: document.body.clientWidth,
+        homePageName: "YUFAN ZHAO'S HOMEPAGE",
+        list: [
+          {
+            'textRow01': 'STUDIO',
+            'textRow02': 'PROJECTS',
+            'cirBg': '#9134d9',
+            'data': {
+              'type': constData.linkJson[0].key
+            }
+          },{
+            'textRow01': 'STUDIO',
+            'textRow02': 'WORKSHOPS',
+            'cirBg': '#598cb2',
+            'data': {
+              'type': constData.linkJson[1].key
+            }
+          },{
+            'textRow01': 'LAB',
+            'textRow02': 'PROJECTS',
+            'cirBg': '#9588c6',
+            'data': {
+              'type': constData.linkJson[2].key
+            }
+          },{
+            'textRow01': 'LAB',
+            'textRow02': 'WORKSHOPS',
+            'cirBg': '#c6adaa',
+            'data': {
+              'type': constData.linkJson[3].key
+            }
+          },
+        ]
+      }
+    },
+    created() {
+
+    },
+    mounted() {
+      this.initData();
+    },
+    methods: {
+      // 点击圆
+      clickA(item) {
+        console.log("电机员",item.data)
+        window.open("homePageList.html"+'?type=' + item.data.type )
+      },
+      // 初始化数据
+      initData() {
+        let that = this;
+        xTrans = [];
+        anime.set('.box', {
+          translateX: function (el, i, l) {
+            xTrans[i] = { x: i * ( that.clientWidth / 4 ) };
+            return i * ( that.clientWidth / 4 );
+          },
+        });
+
+        anime({
+          targets: xTrans,
+          duration: switchTime * 5000, //走一周持续时间
+          easing: 'linear',
+          x: "+="+( that.clientWidth * 8 / 4 ),
+          loop: true,
+          update: function (anim) {
+            anime.set('.box', {
+              translateX: function (el, i, l) {
+                return xTrans[i].x % ( that.clientWidth * 8 / 4 )
+              }
+            });
+          }
+        })
+      }
+    }
+  })
+</script>
+<style>
+
+  .homePageName {
+    position: absolute;
+    bottom:20%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 36px;
+
+  }
+
+
+  .wrapper {
+    width: 100%;
+    height: 25vw;
+    position: absolute;
+    top:10%;
+    left: 0;
+    right: 0;
+
+    margin: 0px auto;
+    /* background: #ccc; */
+    overflow: hidden;
+
+  }
+
+  .box {
+    width: 25vw;
+    height: 25vw;
+    position: absolute;
+    background: red;
+    font-size: 25px;
+    /* line-height: 25vw; */
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+  }
+  .box div {
+    position: absolute;
+    height: 70px;
+    top: 50%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: -35px auto;
+
+  }
+
+  /* .box:nth-child(odd) {
+    background: #f8f8f8;
+  }
+
+  .box:nth-child(even) {
+    background: #eee;
+  } */
+
+  .boxes {
+    position: relative;
+    left: -25vw;
+  }
+</style>
